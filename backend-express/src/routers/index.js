@@ -1,7 +1,10 @@
-const router = require("express").Router();
-
+import { Router } from "express";
 import authRouter from "./auth.routers";
-router.use("/auth", authRouter);
-router.use("/dashboard", require("./dashboard.routers"));
+import dashboardRouter from "./dashboard.routers";
 
-module.exports = router;
+const router = Router();
+
+router.use("/auth", authRouter);
+router.use("/dashboard", dashboardRouter);
+
+export default router;

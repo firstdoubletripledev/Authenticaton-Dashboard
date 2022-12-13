@@ -1,6 +1,6 @@
 import { verify } from "jsonwebtoken";
 
-export default (req, res, next) => {
+export const verifyJwt = (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
     // console.log(token);
     if (token) {

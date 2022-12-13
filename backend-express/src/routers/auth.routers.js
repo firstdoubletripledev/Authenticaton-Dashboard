@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { signIn, signUp, getAccount } from "../controllers/auth.controllers";
-import verifyJwt from "../middleware/verifyJwt.middleware";
+import { verifyJwt } from "../middleware/auth.middleware";
 
 const router = Router();
+
 router.post("/signup", signUp);
 router.post("/signin", signIn);
 router.post("/getaccount", verifyJwt, getAccount);
