@@ -1,11 +1,10 @@
-const router = require("express").Router();
-
-const authController = require("../controllers/auth.controllers");
-// const verifyJwt = require("../middleware/verifyJwt.middleware");
+import { Router } from "express";
+import { signIn, signUp, getAccount } from "../controllers/auth.controllers";
 import verifyJwt from "../middleware/verifyJwt.middleware";
 
-router.post("/signup", authController.signUp);
-router.post("/signin", authController.signIn);
-router.post("/getaccount", verifyJwt, authController.getAccount);
+const router = Router();
+router.post("/signup", signUp);
+router.post("/signin", signIn);
+router.post("/getaccount", verifyJwt, getAccount);
 
-module.exports = router;
+export default router;

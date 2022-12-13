@@ -1,8 +1,7 @@
-// const jsonwebtoken = require("jsonwebtoken");
 import jsonwebtoken from "jsonwebtoken";
-const bcrypt = require("bcrypt");
-const User = require("../models/user");
-const config = require("../config");
+import bcrypt from "bcrypt";
+import User from "../models/user";
+import config from "../config";
 
 const signToken = (payload = {}, expiresIn = "20m") => {
     console.log("signToken");

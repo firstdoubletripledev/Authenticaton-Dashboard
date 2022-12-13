@@ -1,11 +1,10 @@
-// const jwt = require("jsonwebtoken");
-import jwt from "jsonwebtoken";
+import { verify } from "jsonwebtoken";
 
 export default (req, res, next) => {
     const token = req.headers.authorization?.split(' ')[1];
     // console.log(token);
     if (token) {
-        jwt.verify(token, "secretKey", (err, decoded) => {
+        verify(token, "secretKey", (err, decoded) => {
             if (err) return res.json({
                 // isLoggedIn: false,
                 message: "Failed To Authenticate"
