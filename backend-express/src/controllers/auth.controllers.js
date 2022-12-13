@@ -1,4 +1,5 @@
-const jsonwebtoken = require("jsonwebtoken");
+// const jsonwebtoken = require("jsonwebtoken");
+import jsonwebtoken from "jsonwebtoken";
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const config = require("../config");
