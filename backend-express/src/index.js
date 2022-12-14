@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 // config
-import { MONGO_URL } from "./config";
+import { MONGO_URL, port } from "./config";
 
 // cors : accept all
 import cors from "cors";
@@ -29,3 +29,11 @@ app.use(fileupload());
 // use router
 import router from "./routers";
 app.use("/api", router);
+
+// express server LISTEN
+app.listen(port, (err) => {
+    if (err) return console.error(err);
+    console.log("Server is listening on PORT", port);
+}).on("error", (err) => {
+    console.error(err.message);
+});
