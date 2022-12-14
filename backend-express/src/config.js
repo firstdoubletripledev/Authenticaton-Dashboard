@@ -6,7 +6,7 @@ config.port = 5000;
 
 // mongodb
 config.mongodbHost = "0.0.0.0";
-config.mongodbUrl = `mongodb://${config.mongodbHost}:27017/myDB`;
+config.mongodbUrl = `mongodb://${config.mongodbHost}:27017/myDBb`;
 
 // auth
 config.secretOrPrivateKey = "secretKey";

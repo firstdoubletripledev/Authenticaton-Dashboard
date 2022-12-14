@@ -22,6 +22,8 @@ mongoose.connect(mongodbUrl, {})
     .then(() => console.log("mongodb📕 connected🔗"))
     .catch((err) => console.error(err));
 
+// mongoose.connect
+
 // fileupload
 import fileupload from "express-fileupload";
 app.use(fileupload());

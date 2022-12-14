@@ -5,19 +5,25 @@ export const verifyJwt = (req, res, next) => {
     // console.log(token);
     if (token) {
         verify(token, "secretKey", (err, decoded) => {
-            if (err) return res.json({
-                // isLoggedIn: false,
-                message: "Failed To Authenticate"
-            });
+            if (err) {
+                return res.status(400).json({
+                    isLoggedIn: false,
+                    message: "Failed To Authenticate",
+                });
+            }
             // console.log(decoded);
             req.user = {
                 userName: decoded.userName,
                 userEmail: decoded.userEmail,
-                userPassword: decoded.userPassword
+                userPassword: decoded.userPassword,
+                token: token,
             };
-            next();
-        })
+            return next();
+        });
     } else {
-        return res.json({ message: "Incorrect Token Given", isLoggedIn: false });
+        return res.status(400).json({
+            isLoggedIn: false,
+            message: "Incorrect Token Given",
+        });
     }
 }

@@ -23,4 +23,12 @@ const productSchema = new Schema({
     },
 });
 
+// productSchema.pre("save", (next) => {
+//     console.log("productSchema > pre > save", this);
+//     this.baseCost = parseFloat(this.baseCost);
+//     this.price = parseFloat(this.price);
+//     this.amount = parseFloat(this.amount);
+//     next();
+// });
+
 export default model("product", productSchema);

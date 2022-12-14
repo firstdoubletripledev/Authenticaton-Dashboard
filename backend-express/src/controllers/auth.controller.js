@@ -107,5 +107,11 @@ export const signIn = async (req, res) => {
 }
 
 export const getAccount = (req, res) => {
-    // const { token } = req;
+    return res.json({
+        isLoggedIn: true,
+        userName: req.user.userName,
+        userEmail: req.user.userEmail,
+        userPassword: req.user.userPassword,
+        avatar: req.user.avatar,
+    });
 }
