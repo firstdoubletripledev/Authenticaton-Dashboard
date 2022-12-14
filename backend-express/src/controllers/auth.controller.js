@@ -5,7 +5,6 @@ import config from "../config";
 
 const signToken = (payload = {}, expiresIn = "20m") => {
     console.log("signToken");
-    const secretOrPrivateKey = "secretKey";
     return jsonwebtoken.sign(payload, secretOrPrivateKey, { expiresIn: expiresIn });
 }
 
@@ -41,7 +40,7 @@ export const signUp = async (req, res) => {
             await userAvatar.mv(userAvatarPath);
             console.log(userAvatarPath);
 
-            const newUser = new users({
+            const newUser = new User({
                 name: userName,
                 email: userEmail,
                 password: hashedPassword,
@@ -60,7 +59,7 @@ export const signUp = async (req, res) => {
     }
     catch (err) {
         console.error(err);
-        return res.status(500).send();
+        return res.status(500).send(err);
     }
 }
 
@@ -96,14 +95,14 @@ export const signIn = async (req, res) => {
 
         // delete user.userPassword;
         const token = signToken(user);
-        return res.status(200).json({
+        return res.json({
             account: user,
             token: token,
         });
     }
     catch (err) {
         console.error(err);
-        return res.status(500).send();
+        return res.status(500).send(err);
     }
 }
 

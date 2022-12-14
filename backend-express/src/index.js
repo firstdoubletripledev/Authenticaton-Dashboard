@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 // config
-import { MONGO_URL, port } from "./config";
+import { mongodbUrl, port } from "./config";
 
 // cors : accept all
 import cors from "cors";
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 // mongodb connect with mongoose
 import mongoose from "mongoose";
 mongoose.set("strictQuery", true);
-mongoose.connect(MONGO_URL, {})
+mongoose.connect(mongodbUrl, {})
     .then(() => console.log("mongodb📕 connected🔗"))
     .catch((err) => console.error(err));
 
